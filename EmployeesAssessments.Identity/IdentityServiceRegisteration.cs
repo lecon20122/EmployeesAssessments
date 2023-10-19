@@ -1,5 +1,7 @@
-﻿using EmployeesAssessments.Application.Models.Authentication;
+﻿using EmployeesAssessments.Application.Contracts.Identity;
+using EmployeesAssessments.Application.Models.Authentication;
 using EmployeesAssessments.Identity.Models;
+using EmployeesAssessments.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +16,12 @@ namespace EmployeesAssessments.Identity
     {
         public static void AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
+
             services.Configure<JWTSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<ApplicationIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("GloboTicketIdentityConnectionString"),
-                b => b.MigrationsAssembly(typeof(ApplicationIdentityDbContext).Assembly.FullName)));
+            services.AddDbContext<ApplicationIdentityDbContext>
+                (options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
@@ -45,9 +49,9 @@ namespace EmployeesAssessments.Identity
                 ValidateIssuerSigningKey = false,
                 ValidateLifetime = true,
 
-                ValidIssuer = configuration["Jwt:Issuer"],
-                ValidAudience = configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Secret"]))
+                ValidIssuer = configuration["JwtSettings:Issuer"],
+                ValidAudience = configuration["JwtSettings:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
             });
         }
     }

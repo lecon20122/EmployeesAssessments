@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EmployeesAssessments.Application.Features.AssessmentAnswers.Query;
+using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers;
 using EmployeesAssessments.Domain.Entities;
 using System;
 using System.Collections.Generic;

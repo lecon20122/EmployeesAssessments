@@ -1,11 +1,6 @@
 ﻿using EmployeesAssessments.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query
+namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers
 {
     public class AssessmentAnswerVm
     {

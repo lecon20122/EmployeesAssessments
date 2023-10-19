@@ -19,6 +19,7 @@
     <ProjectReference Include="..\EmployeesAssessments.Application\EmployeesAssessments.Application.csproj" />
     <ProjectReference Include="..\EmployeesAssessments.Domain\EmployeesAssessments.Domain.csproj" />
     <ProjectReference Include="..\EmployeesAssessments.Identity\EmployeesAssessments.Identity.csproj" />
+    <ProjectReference Include="..\EmployeesAssessments.Infrastructure\EmployeesAssessments.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

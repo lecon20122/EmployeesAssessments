@@ -2,13 +2,8 @@
 using EmployeesAssessments.Application.Contracts.Persistence;
 using EmployeesAssessments.Application.Exceptions;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query
+namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers
 {
     public class GetAssessmentAnswersQueryHandler : IRequestHandler<GetAssessmentAnswersQuery, List<AssessmentAnswerVm>>
     {
@@ -23,7 +18,7 @@ namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query
 
         public async Task<List<AssessmentAnswerVm>> Handle(GetAssessmentAnswersQuery request, CancellationToken cancellationToken)
         {
-            var assessmentAnswers = await _assessmentAsnwerRepository.GetAssessmentAnswers(request.AssessmentId);
+            var assessmentAnswers = await _assessmentAsnwerRepository.GetAssessmentAnswers();
 
             if (assessmentAnswers == null) throw new NotFoundException();
 
