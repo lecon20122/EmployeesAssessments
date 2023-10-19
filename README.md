@@ -1,3 +1,14 @@
+## Packages Used
+
+In this project, we've used the following packages, along with their latest versions at the time of this task:
+
+- AutoMapper: v12.0.1
+- MediatR: v12.1.1
+- Identity Framework: v7.0.12
+- Entity Framework Core: v7.0.12
+- JwtBearer v7.0.12
+
+
 ## Project Structure
 
 | Directory/Project | Description |
@@ -16,13 +27,3 @@ In this project, I've adopted a Vertically Sliced architecture based on the Clea
  in `src/Core/Application/Features`, each feature has its own view models and DTOs, also the Commands and Queries  
 
 The benefits of a Vertically Sliced architecture include improved maintainability, reduced coupling between unrelated features, and the ability to develop and test features independently.
-
-## Packages Used
-
-In this project, we've used the following packages, along with their latest versions at the time of this task:
-
-- AutoMapper: v12.0.1
-- MediatR: v12.1.1
-- Identity Framework: v7.0.12
-- Entity Framework Core: v7.0.12
-- JwtBearer v7.0.12
