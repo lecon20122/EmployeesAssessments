@@ -123,7 +123,7 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
+                    AssessmentQuestionId = table.Column<long>(type: "bigint", nullable: false),
                     AssessmentId = table.Column<long>(type: "bigint", nullable: false),
                     IsTrue = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -250,7 +250,7 @@ namespace EmployeesAssessments.Identity.Migrations
                     QuestionIdKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Option = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
+                    AssessmentQuestionId = table.Column<long>(type: "bigint", nullable: false),
                     Order = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -259,8 +259,8 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     table.PrimaryKey("PK_AssessmentMatchs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssessmentMatchs_AssessmentQuestions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_AssessmentMatchs_AssessmentQuestions_AssessmentQuestionId",
+                        column: x => x.AssessmentQuestionId,
                         principalTable: "AssessmentQuestions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -273,7 +273,7 @@ namespace EmployeesAssessments.Identity.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Option = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
+                    AssessmentQuestionId = table.Column<long>(type: "bigint", nullable: false),
                     Correct = table.Column<byte>(type: "tinyint", nullable: false),
                     Order = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -283,8 +283,8 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     table.PrimaryKey("PK_AssessmentOptions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssessmentOptions_AssessmentQuestions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_AssessmentOptions_AssessmentQuestions_AssessmentQuestionId",
+                        column: x => x.AssessmentQuestionId,
                         principalTable: "AssessmentQuestions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -297,7 +297,7 @@ namespace EmployeesAssessments.Identity.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
+                    AssessmentQuestionId = table.Column<long>(type: "bigint", nullable: false),
                     Order = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -306,8 +306,8 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     table.PrimaryKey("PK_AssessmentTexts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssessmentTexts_AssessmentQuestions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_AssessmentTexts_AssessmentQuestions_AssessmentQuestionId",
+                        column: x => x.AssessmentQuestionId,
                         principalTable: "AssessmentQuestions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -320,7 +320,7 @@ namespace EmployeesAssessments.Identity.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AssessmentId = table.Column<long>(type: "bigint", nullable: false),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
+                    AssessmentQuestionId = table.Column<long>(type: "bigint", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     Score = table.Column<byte>(type: "tinyint", nullable: false),
@@ -331,8 +331,8 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     table.PrimaryKey("PK_AssessmentAnswers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssessmentAnswers_AssessmentQuestions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_AssessmentAnswers_AssessmentQuestions_AssessmentQuestionId",
+                        column: x => x.AssessmentQuestionId,
                         principalTable: "AssessmentQuestions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -493,19 +493,19 @@ namespace EmployeesAssessments.Identity.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedAt", "Level", "Order", "Question", "Type", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1L, 0L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5072), 1, 1, "Do you have a good communication skills?", "true_false", null },
-                    { 2L, 0L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5083), 1, 2, "Do you have a good communication skills?", "true_false", null },
-                    { 3L, 0L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5088), 1, 3, "Do you have a good .NET skills?", "true_false", null },
-                    { 4L, 0L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5093), 1, 4, "Do you have a good React skills?", "true_false", null }
+                    { 1L, 0L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7037), 1, 1, "Do you have a good communication skills?", "true_false", null },
+                    { 2L, 0L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7047), 1, 2, "Do you have a good communication skills?", "true_false", null },
+                    { 3L, 0L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7053), 1, 3, "Do you have a good .NET skills?", "true_false", null },
+                    { 4L, 0L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7058), 1, 4, "Do you have a good React skills?", "true_false", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "AssessmentTrueFalse",
-                columns: new[] { "Id", "AssessmentId", "CreatedAt", "IsTrue", "QuestionId", "UpdatedAt" },
+                columns: new[] { "Id", "AssessmentId", "AssessmentQuestionId", "CreatedAt", "IsTrue", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5136), true, 1L, null },
-                    { 2L, 1L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5144), true, 2L, null }
+                    { 1L, 1L, 1L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7108), true, null },
+                    { 2L, 1L, 2L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7117), true, null }
                 });
 
             migrationBuilder.InsertData(
@@ -513,18 +513,18 @@ namespace EmployeesAssessments.Identity.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedAt", "CreatedBy", "Description", "Duration", "Published", "ShortDescription", "Slug", "Thumbnail", "Title", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1L, null, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(4943), 1, "Assessment 1 Description", null, true, null, null, null, "Assessment 1", null, null },
-                    { 2L, null, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5020), 1, "Assessment 2 Description", null, true, null, null, null, "Assessment 2", null, null },
-                    { 3L, null, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5026), 1, "Assessment 3 Description", null, true, null, null, null, "Assessment 3", null, null }
+                    { 1L, null, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6856), 1, "Assessment 1 Description", null, true, null, null, null, "Assessment 1", null, null },
+                    { 2L, null, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6975), 1, "Assessment 2 Description", null, true, null, null, null, "Assessment 2", null, null },
+                    { 3L, null, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6982), 1, "Assessment 3 Description", null, true, null, null, null, "Assessment 3", null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "AssessmentAnswers",
-                columns: new[] { "Id", "Answer", "AssessmentId", "CreatedAt", "QuestionId", "Score", "UpdatedAt", "UserId" },
+                columns: new[] { "Id", "Answer", "AssessmentId", "AssessmentQuestionId", "CreatedAt", "Score", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 1L, "Yes", 1L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5240), 1L, (byte)1, null, 1L },
-                    { 2L, "Yes", 1L, new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5249), 2L, (byte)1, null, 1L }
+                    { 1L, "Yes", 1L, 1L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7166), (byte)1, null, 1L },
+                    { 2L, "Yes", 1L, 2L, new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7174), (byte)1, null, 1L }
                 });
 
             migrationBuilder.CreateIndex(
@@ -572,9 +572,9 @@ namespace EmployeesAssessments.Identity.Migrations
                 column: "AssessmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssessmentAnswers_QuestionId",
+                name: "IX_AssessmentAnswers_AssessmentQuestionId",
                 table: "AssessmentAnswers",
-                column: "QuestionId");
+                column: "AssessmentQuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssessmentAssessmentQuestion_AssessmentsId",
@@ -597,9 +597,9 @@ namespace EmployeesAssessments.Identity.Migrations
                 column: "AssessmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssessmentMatchs_QuestionId",
+                name: "IX_AssessmentMatchs_AssessmentQuestionId",
                 table: "AssessmentMatchs",
-                column: "QuestionId");
+                column: "AssessmentQuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssessmentMeta_AssessmentId",
@@ -607,9 +607,9 @@ namespace EmployeesAssessments.Identity.Migrations
                 column: "AssessmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssessmentOptions_QuestionId",
+                name: "IX_AssessmentOptions_AssessmentQuestionId",
                 table: "AssessmentOptions",
-                column: "QuestionId");
+                column: "AssessmentQuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssessmentSections_AssessmentId",
@@ -617,9 +617,9 @@ namespace EmployeesAssessments.Identity.Migrations
                 column: "AssessmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssessmentTexts_QuestionId",
+                name: "IX_AssessmentTexts_AssessmentQuestionId",
                 table: "AssessmentTexts",
-                column: "QuestionId");
+                column: "AssessmentQuestionId");
         }
 
         /// <inheritdoc />

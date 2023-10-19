@@ -8,7 +8,7 @@ namespace EmployeesAssessments.Domain.Entities
         public string QuestionIdKey { get; set; }
         public string Option { get; set; }
         public string Answer { get; set; }
-        public long QuestionId { get; set; }
+        public long AssessmentQuestionId { get; set; }
         public AssessmentQuestion Question { get; set; }
         public int Order { get; set; }
     }

@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers;
+using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswersWithAssessmentQuestion;
 using EmployeesAssessments.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeesAssessments.Application
 {
@@ -14,6 +10,10 @@ namespace EmployeesAssessments.Application
         public MappingProfile()
         {
             CreateMap<AssessmentAnswer, AssessmentAnswerVm>().ReverseMap();
+
+            CreateMap<AssessmentAnswer, AssessmentAnswersWithAssessmentQuestionVm>().ReverseMap();
+
+            CreateMap<AssessmentQuestion, AssessmentQuestionDto>().ReverseMap();
         }
     }
 }

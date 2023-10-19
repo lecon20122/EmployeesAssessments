@@ -32,5 +32,13 @@ namespace EmployeesAssessments.Persisitence.Repository
                     .ToListAsync();
 
         }
+
+        public async Task<List<AssessmentAnswer>> GetAssessmentAnswersWithAssessmentQuestion()
+        {
+            return await _dbContext.AssessmentAnswers
+                    .Include(x => x.AssessmentQuestion)
+                    .Where(x => x.UserId == _userId)
+                    .ToListAsync();
+        }
     }
 }

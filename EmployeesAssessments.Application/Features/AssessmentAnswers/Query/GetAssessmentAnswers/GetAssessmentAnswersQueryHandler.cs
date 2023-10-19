@@ -5,12 +5,12 @@ using MediatR;
 
 namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers
 {
-    public class GetAssessmentAnswersQueryHandler : IRequestHandler<GetAssessmentAnswersQuery, List<AssessmentAnswerVm>>
+    public class GetAssessmentAnswersWithAssessmentAndQuestionQueryHandler : IRequestHandler<GetAssessmentAnswersQuery, List<AssessmentAnswerVm>>
     {
         private readonly IMapper _mapper;
         private readonly IAssessmentAsnwerRepository _assessmentAsnwerRepository;
 
-        public GetAssessmentAnswersQueryHandler(IMapper mapper, IAssessmentAsnwerRepository assessmentAsnwerRepository)
+        public GetAssessmentAnswersWithAssessmentAndQuestionQueryHandler(IMapper mapper, IAssessmentAsnwerRepository assessmentAsnwerRepository)
         {
             _mapper = mapper;
             _assessmentAsnwerRepository = assessmentAsnwerRepository;

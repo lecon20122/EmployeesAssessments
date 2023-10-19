@@ -89,7 +89,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(4943),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6856),
                             CreatedBy = 1,
                             Description = "Assessment 1 Description",
                             Published = true,
@@ -98,7 +98,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5020),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6975),
                             CreatedBy = 1,
                             Description = "Assessment 2 Description",
                             Published = true,
@@ -107,7 +107,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5026),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(6982),
                             CreatedBy = 1,
                             Description = "Assessment 3 Description",
                             Published = true,
@@ -130,11 +130,11 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<long>("AssessmentId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("AssessmentQuestionId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
 
                     b.Property<byte>("Score")
                         .HasColumnType("tinyint");
@@ -149,7 +149,7 @@ namespace EmployeesAssessments.Identity.Migrations
 
                     b.HasIndex("AssessmentId");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("AssessmentQuestionId");
 
                     b.ToTable("AssessmentAnswers");
 
@@ -159,8 +159,8 @@ namespace EmployeesAssessments.Identity.Migrations
                             Id = 1L,
                             Answer = "Yes",
                             AssessmentId = 1L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5240),
-                            QuestionId = 1L,
+                            AssessmentQuestionId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7166),
                             Score = (byte)1,
                             UserId = 1L
                         },
@@ -169,8 +169,8 @@ namespace EmployeesAssessments.Identity.Migrations
                             Id = 2L,
                             Answer = "Yes",
                             AssessmentId = 1L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5249),
-                            QuestionId = 2L,
+                            AssessmentQuestionId = 2L,
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7174),
                             Score = (byte)1,
                             UserId = 1L
                         });
@@ -280,6 +280,9 @@ namespace EmployeesAssessments.Identity.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("AssessmentQuestionId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -290,9 +293,6 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("QuestionIdKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -302,7 +302,7 @@ namespace EmployeesAssessments.Identity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("AssessmentQuestionId");
 
                     b.ToTable("AssessmentMatchs");
                 });
@@ -347,6 +347,9 @@ namespace EmployeesAssessments.Identity.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<long>("AssessmentQuestionId")
+                        .HasColumnType("bigint");
+
                     b.Property<byte>("Correct")
                         .HasColumnType("tinyint");
 
@@ -360,15 +363,12 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("AssessmentQuestionId");
 
                     b.ToTable("AssessmentOptions");
                 });
@@ -413,7 +413,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         {
                             Id = 1L,
                             CategoryId = 0L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5072),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7037),
                             Level = 1,
                             Order = 1,
                             Question = "Do you have a good communication skills?",
@@ -423,7 +423,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         {
                             Id = 2L,
                             CategoryId = 0L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5083),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7047),
                             Level = 1,
                             Order = 2,
                             Question = "Do you have a good communication skills?",
@@ -433,7 +433,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         {
                             Id = 3L,
                             CategoryId = 0L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5088),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7053),
                             Level = 1,
                             Order = 3,
                             Question = "Do you have a good .NET skills?",
@@ -443,7 +443,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         {
                             Id = 4L,
                             CategoryId = 0L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5093),
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7058),
                             Level = 1,
                             Order = 4,
                             Question = "Do you have a good React skills?",
@@ -498,21 +498,21 @@ namespace EmployeesAssessments.Identity.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("AssessmentQuestionId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("AssessmentQuestionId");
 
                     b.ToTable("AssessmentTexts");
                 });
@@ -528,14 +528,14 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<long>("AssessmentId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("AssessmentQuestionId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsTrue")
                         .HasColumnType("bit");
-
-                    b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -549,17 +549,17 @@ namespace EmployeesAssessments.Identity.Migrations
                         {
                             Id = 1L,
                             AssessmentId = 1L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5136),
-                            IsTrue = true,
-                            QuestionId = 1L
+                            AssessmentQuestionId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7108),
+                            IsTrue = true
                         },
                         new
                         {
                             Id = 2L,
                             AssessmentId = 1L,
-                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5144),
-                            IsTrue = true,
-                            QuestionId = 2L
+                            AssessmentQuestionId = 2L,
+                            CreatedAt = new DateTime(2023, 10, 19, 20, 1, 55, 512, DateTimeKind.Local).AddTicks(7117),
+                            IsTrue = true
                         });
                 });
 
@@ -870,15 +870,15 @@ namespace EmployeesAssessments.Identity.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "Question")
+                    b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "AssessmentQuestion")
                         .WithMany("Answers")
-                        .HasForeignKey("QuestionId")
+                        .HasForeignKey("AssessmentQuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Assessment");
 
-                    b.Navigation("Question");
+                    b.Navigation("AssessmentQuestion");
                 });
 
             modelBuilder.Entity("EmployeesAssessments.Domain.Entities.AssessmentData", b =>
@@ -918,7 +918,7 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "Question")
                         .WithMany()
-                        .HasForeignKey("QuestionId")
+                        .HasForeignKey("AssessmentQuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -940,7 +940,7 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "Question")
                         .WithMany()
-                        .HasForeignKey("QuestionId")
+                        .HasForeignKey("AssessmentQuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -962,7 +962,7 @@ namespace EmployeesAssessments.Identity.Migrations
                 {
                     b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "Question")
                         .WithMany()
-                        .HasForeignKey("QuestionId")
+                        .HasForeignKey("AssessmentQuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

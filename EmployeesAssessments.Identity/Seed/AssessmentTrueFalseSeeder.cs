@@ -18,14 +18,14 @@ namespace EmployeesAssessments.Identity.Seed
                     Id = 1,
                     AssessmentId = 1,
                     IsTrue = true,
-                    QuestionId = 1,
+                    AssessmentQuestionId = 1,
                     CreatedAt = DateTime.Now,
                 },
                 new AssessmentTrueFalse()
                 {
                     Id = 2,
                     AssessmentId = 1,
-                    QuestionId = 2,
+                    AssessmentQuestionId = 2,
                     IsTrue = true,
                     CreatedAt = DateTime.Now,
                 },
