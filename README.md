@@ -1,4 +1,4 @@
-Seed Data
+## Seed Data
 I've included seed data to help you get started more easily. This seed data will populate the database with initial records, making it easier to test and explore the application's functionality.
 
 ## Packages Used
