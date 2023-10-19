@@ -6,6 +6,6 @@ namespace EmployeesAssessments.Domain.Entities
     {
         public long QuestionId { get; set; }
         public long AssessmentId { get; set; }
-        public int IsTrue { get; set; }
+        public bool IsTrue { get; set; }
     }
 }

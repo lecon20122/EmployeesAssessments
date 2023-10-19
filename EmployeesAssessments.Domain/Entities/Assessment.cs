@@ -18,7 +18,7 @@ namespace EmployeesAssessments.Domain.Entities
         public int? Duration { get; set; }
         public long? CategoryId { get; set; }
         public string? Thumbnail { get; set; }
-        public byte Published { get; set; }
+        public bool Published { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public ICollection<AssessmentQuestion> AssessmentQuestions { get; set; }

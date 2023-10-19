@@ -39,6 +39,10 @@ namespace EmployeesAssessments.Identity
             base.OnModelCreating(builder);
 
             builder.Entity<ApplicationUser>().HasData(ApplicationUserSeed.Seed());
+            builder.Entity<Assessment>().HasData(AssessmentSeeder.Seed());
+            builder.Entity<AssessmentQuestion>().HasData(AssessmentQuestionSeeder.Seed());
+            builder.Entity<AssessmentTrueFalse>().HasData(AssessmentTrueFalseSeeder.Seed());
+            builder.Entity<AssessmentAnswer>().HasData(AssessmentAnswerSeeder.Seed());
         }
     }
 }

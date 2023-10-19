@@ -1,10 +1,4 @@
 ﻿using EmployeesAssessments.Identity.Models;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeesAssessments.Identity.Seed
 {
@@ -12,24 +6,20 @@ namespace EmployeesAssessments.Identity.Seed
     {
         public static ApplicationUser Seed()
         {
-            var passwordHasher = new PasswordHasher<ApplicationUser>();
-
             ApplicationUser user = new ApplicationUser
             {
                 Id = 1,
+                UserName = "admin@gmail.com",
                 FirstName = "Admin",
                 LastName = "Admin",
-                Email = "Admin@gmail.com",
-                UserName = "Admin",
-                NormalizedEmail = "ADMIN",
-                NormalizedUserName = "ADMIN",
+                NormalizedUserName = "ADMIN@GMAIL.COM",
+                Email = "admin@gmail.com",
+                NormalizedEmail = "ADMIN@GMAIL.COM",
                 EmailConfirmed = true,
-                PhoneNumberConfirmed = true,
-                SecurityStamp = Guid.NewGuid().ToString("D"),
+                SecurityStamp = "VVPCRDAS3MJWQD5CSW2GWPRADBXEZINA",
+                ConcurrencyStamp = "c8554266-b401-4519-9aeb-a9283053fc58",
+                PasswordHash = "AQAAAAIAAYagAAAAEHZtZrjReG6DkxuNGEkADcp3SpIKUcfwAvzQ7idbUFkPJA+5tbACXzr8YQVWQGAOlQ==" //admin@1234
             };
-
-            user.PasswordHash = passwordHasher.HashPassword(user, "Admin@123");
-
             return user;
         }
     }

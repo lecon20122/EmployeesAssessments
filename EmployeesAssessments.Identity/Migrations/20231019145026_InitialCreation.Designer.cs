@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeesAssessments.Identity.Migrations
 {
     [DbContext(typeof(ApplicationIdentityDbContext))]
-    [Migration("20231018182605_CoreDomainEntities")]
-    partial class CoreDomainEntities
+    [Migration("20231019145026_InitialCreation")]
+    partial class InitialCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,8 +63,8 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<int?>("Duration")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Published")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("Published")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
@@ -87,6 +87,35 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Assessments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(4943),
+                            CreatedBy = 1,
+                            Description = "Assessment 1 Description",
+                            Published = true,
+                            Title = "Assessment 1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5020),
+                            CreatedBy = 1,
+                            Description = "Assessment 2 Description",
+                            Published = true,
+                            Title = "Assessment 2"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5026),
+                            CreatedBy = 1,
+                            Description = "Assessment 3 Description",
+                            Published = true,
+                            Title = "Assessment 3"
+                        });
                 });
 
             modelBuilder.Entity("EmployeesAssessments.Domain.Entities.AssessmentAnswer", b =>
@@ -126,6 +155,28 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("AssessmentAnswers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Answer = "Yes",
+                            AssessmentId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5240),
+                            QuestionId = 1L,
+                            Score = (byte)1,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Answer = "Yes",
+                            AssessmentId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5249),
+                            QuestionId = 2L,
+                            Score = (byte)1,
+                            UserId = 1L
+                        });
                 });
 
             modelBuilder.Entity("EmployeesAssessments.Domain.Entities.AssessmentData", b =>
@@ -359,6 +410,48 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AssessmentQuestions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CategoryId = 0L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5072),
+                            Level = 1,
+                            Order = 1,
+                            Question = "Do you have a good communication skills?",
+                            Type = "true_false"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CategoryId = 0L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5083),
+                            Level = 1,
+                            Order = 2,
+                            Question = "Do you have a good communication skills?",
+                            Type = "true_false"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CategoryId = 0L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5088),
+                            Level = 1,
+                            Order = 3,
+                            Question = "Do you have a good .NET skills?",
+                            Type = "true_false"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CategoryId = 0L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5093),
+                            Level = 1,
+                            Order = 4,
+                            Question = "Do you have a good React skills?",
+                            Type = "true_false"
+                        });
                 });
 
             modelBuilder.Entity("EmployeesAssessments.Domain.Entities.AssessmentSection", b =>
@@ -441,8 +534,8 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IsTrue")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsTrue")
+                        .HasColumnType("bit");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -453,6 +546,24 @@ namespace EmployeesAssessments.Identity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AssessmentTrueFalse");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AssessmentId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5136),
+                            IsTrue = true,
+                            QuestionId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AssessmentId = 1L,
+                            CreatedAt = new DateTime(2023, 10, 19, 17, 50, 26, 677, DateTimeKind.Local).AddTicks(5144),
+                            IsTrue = true,
+                            QuestionId = 2L
+                        });
                 });
 
             modelBuilder.Entity("EmployeesAssessments.Identity.Models.ApplicationRole", b =>
@@ -620,19 +731,19 @@ namespace EmployeesAssessments.Identity.Migrations
                             Id = 1L,
                             AccessFailedCount = 0,
                             ApiKey = new Guid("00000000-0000-0000-0000-000000000000"),
-                            ConcurrencyStamp = "d827b0a1-ee39-4f71-a76a-75ab719a4236",
-                            Email = "Admin@gmail.com",
+                            ConcurrencyStamp = "c8554266-b401-4519-9aeb-a9283053fc58",
+                            Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "Admin",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAY/Vti5Wa5BQNtc01j3n7hPDFbdM1yjik2QIdTI0Ca9x85bpqmIX4DVm0df6Wt3cQ==",
-                            PhoneNumberConfirmed = true,
-                            SecurityStamp = "8af9263f-c796-4135-b349-4420f21ac9f9",
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHZtZrjReG6DkxuNGEkADcp3SpIKUcfwAvzQ7idbUFkPJA+5tbACXzr8YQVWQGAOlQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "VVPCRDAS3MJWQD5CSW2GWPRADBXEZINA",
                             TwoFactorEnabled = false,
-                            UserName = "Admin"
+                            UserName = "admin@gmail.com"
                         });
                 });
 
@@ -763,7 +874,7 @@ namespace EmployeesAssessments.Identity.Migrations
                         .IsRequired();
 
                     b.HasOne("EmployeesAssessments.Domain.Entities.AssessmentQuestion", "Question")
-                        .WithMany()
+                        .WithMany("Answers")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -910,6 +1021,11 @@ namespace EmployeesAssessments.Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EmployeesAssessments.Domain.Entities.AssessmentQuestion", b =>
+                {
+                    b.Navigation("Answers");
                 });
 #pragma warning restore 612, 618
         }
