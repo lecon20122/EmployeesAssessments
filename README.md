@@ -9,6 +9,14 @@
 | `src/Infrastructure/Identity` | The Identity Layer is responsible for data access, and the Implementation of Identity Authentication. |
 | `src/API` | The API Layer is responsible for the user interface, whether it's a web application, API, or another user-facing component. It interacts with the Application Layer to serve user requests. |
 
+## Vertically Sliced Architecture
+
+In this project, I've adopted a Vertically Sliced architecture based on the Clean Architecture principles. A Vertically Sliced architecture is an approach to structuring your application that emphasizes organizing code around specific features or use cases.
+
+ in `src/Core/Application/Features`, each feature has its own view models and DTOs, also the Commands and Queries  
+
+The benefits of a Vertically Sliced architecture include improved maintainability, reduced coupling between unrelated features, and the ability to develop and test features independently.
+
 ## Packages Used
 
 In this project, we've used the following packages, along with their latest versions at the time of this task:
