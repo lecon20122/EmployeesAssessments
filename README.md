@@ -1,3 +1,6 @@
+## React Page (Nextjs)
+the [Employee Assessment Client Repo](https://github.com/lecon20122/EmployeeAssessmentClient) contains the client app for the task, using Nextjs Framework and Tailwindcss.
+
 ## Seed Data
 I've included seed data to help you get started more easily. This seed data will populate the database with initial records, making it easier to test and explore the application's functionality.
 
