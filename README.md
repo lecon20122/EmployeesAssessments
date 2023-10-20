@@ -3,6 +3,7 @@ the [Employee Assessment Client Repo](https://github.com/lecon20122/EmployeeAsse
 
 ## Seed Data
 I've included seed data to help you get started more easily. This seed data will populate the database with initial records, making it easier to test and explore the application's functionality.
+you can use this account to try the code, E-mail : `admin@gmail.com`, Password : `admin@1234`
 
 ## Packages Used
 
