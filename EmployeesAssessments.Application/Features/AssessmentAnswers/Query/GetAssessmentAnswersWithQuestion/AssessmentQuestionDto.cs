@@ -1,4 +1,4 @@
-﻿namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswersWithAssessmentQuestion
+﻿namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswersWithQuestion
 {
     public class AssessmentQuestionDto
     {

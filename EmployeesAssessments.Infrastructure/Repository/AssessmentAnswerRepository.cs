@@ -25,6 +25,12 @@ namespace EmployeesAssessments.Persisitence.Repository
             _httpContextAccessor = httpContextAccessor;
             _userId = long.Parse(_userManager.GetUserId(principal: _httpContextAccessor.HttpContext.User));
         }
+
+        public Task<AssessmentAnswer> CreateAsync(AssessmentAnswer assessmentAnswer)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<AssessmentAnswer>> GetAssessmentAnswers()
         {
             return await _dbContext.AssessmentAnswers
@@ -33,7 +39,7 @@ namespace EmployeesAssessments.Persisitence.Repository
 
         }
 
-        public async Task<List<AssessmentAnswer>> GetAssessmentAnswersWithAssessmentQuestion()
+        public async Task<List<AssessmentAnswer>> GetAssessmentAnswersWithQuestion()
         {
             return await _dbContext.AssessmentAnswers
                     .Include(x => x.AssessmentQuestion)
