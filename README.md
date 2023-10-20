@@ -1,9 +1,9 @@
 ## React Page (Nextjs)
-the [Employee Assessment Client Repo](https://github.com/lecon20122/EmployeeAssessmentClient) contains the client app for the task, using Nextjs Framework and Tailwindcss.
+the [Employee Assessment Client Repo](https://github.com/lecon20122/EmployeeAssessmentClient) contains the client app for the task, using Nextjs Framework, NextAuth, ReactQuery, and Tailwindcss.
 
 ## Seed Data
-I've included seed data to help you get started more easily. This seed data will populate the database with initial records, making it easier to test and explore the application's functionality.
-you can use this account to try the code, E-mail : `admin@gmail.com`, Password : `admin@1234`
+I've included seed data to help you get started more easily. This seed data will populate the database with initial records, making testing and exploring the application's functionality easier.
+you can use this account to try the code, E-mail: `admin@gmail.com`, Password: `admin@1234`
 
 ## Packages Used
 
@@ -20,9 +20,9 @@ In this project, we've used the following packages, along with their latest vers
 
 | Directory/Project | Description |
 | --- | --- |
-| `src/` | This folder contains the source code of your application. It is divided into several projects: |
+| `src/` | This folder contains your application's source code. It is divided into several projects: |
 | `src/Core/Application` | The Application Layer contains application logic, including use cases, Contracts, Exceptions, Features, and Models for Other External Services like Identity. It acts as a bridge between the API Layer and the Domain Layer. This is where you define the core business logic and handle use cases. |
-| `src/Core/Domain` | The Domain Layer contains the core business logic and domain entities. This layer should be independent of any infrastructure concerns and should represent the heart of your application's functionality. |
+| `src/Core/Domain` | The Domain Layer contains the core business logic and domain entities. This layer should be independent of any infrastructure concerns and represent the heart of your application's functionality. |
 | `src/Infrastructure/Persistence` | The Persistence Layer is responsible for Implementing the Core Application Contracts. It is responsible for persisting the data to the database |
 | `src/Infrastructure/Identity` | The Identity Layer is responsible for data access, and the Implementation of Identity Authentication. |
 | `src/API` | The API Layer is responsible for the user interface, whether it's a web application, API, or another user-facing component. It interacts with the Application Layer to serve user requests. |
