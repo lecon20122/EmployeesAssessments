@@ -51,6 +51,51 @@ namespace EmployeesAssessments.Identity.Seed
                     Level = 1,
                     Type = "true_false"
                 },
+                new AssessmentQuestion()
+                {
+                    Id = 5,
+                    Question= "Do you have a good Angular skills?",
+                    CreatedAt = DateTime.Now,
+                    Order = 5,
+                    Level = 1,
+                    Type = "true_false"
+                },
+                new AssessmentQuestion()
+                {
+                    Id = 6,
+                    Question= "Do you have a good communication skills?",
+                    CreatedAt = DateTime.Now,
+                    Order = 6,
+                    Level = 1,
+                    Type = "true_false"
+                },
+                new AssessmentQuestion()
+                {
+                    Id = 7,
+                    Question= "Do you have a good communication skills?",
+                    CreatedAt = DateTime.Now,
+                    Order = 7,
+                    Level = 1,
+                    Type = "true_false"
+                },
+                new AssessmentQuestion()
+                {
+                    Id = 8,
+                    Question= "Do you have a good communication skills?",
+                    CreatedAt = DateTime.Now,
+                    Order = 8,
+                    Level = 1,
+                    Type = "true_false"
+                },
+                new AssessmentQuestion()
+                {
+                    Id = 9,
+                    Question= "Do you have a good communication skills?",
+                    CreatedAt = DateTime.Now,
+                    Order = 9,
+                    Level = 1,
+                    Type = "true_false"
+                },
             };
         }
     }

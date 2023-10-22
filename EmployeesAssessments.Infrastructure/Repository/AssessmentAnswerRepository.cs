@@ -1,5 +1,6 @@
 ﻿using EmployeesAssessments.Application.Contracts.Persistence;
 using EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers;
+using EmployeesAssessments.Application.Models.AssessmentAnswerTypes;
 using EmployeesAssessments.Domain.Entities;
 using EmployeesAssessments.Identity;
 using EmployeesAssessments.Identity.Models;
@@ -27,13 +28,72 @@ namespace EmployeesAssessments.Persisitence.Repository
             _userId = long.Parse(_userManager.GetUserId(principal: _httpContextAccessor.HttpContext.User));
         }
 
-        public Task<bool> CreateAsync(CreateAssessmentAnswerCommand command)
+        public async Task<bool> CreateAsync(CreateAssessmentAnswerCommand command)
         {
-            foreach (var item in command.assessmentAnswer)
+            foreach (var answer in command.assessmentAnswers)
             {
+                ////////////////////**Disclaimer**/////////////////////////
+                ///////////////////////////////////////////////////////////
+                //for Fill, Match, Multiple Select types
+                //i don't know what el {question,answer} means
+                //also for the Multiple Select type i don't know what the List of int means or where i should save them.
+                //determine the type of the answer and create the answer
+                ///////////////////////////////////////////////////////////
+                ////////////////////**Disclaimer**/////////////////////////
+
+
+                if (answer is TrueFalseAnswerType)
+                {
+                    var trueFalseAnswer = new AssessmentAnswer
+                    {
+                        AssessmentId = command.assessmentId,
+                        AssessmentQuestionId = answer.QuestionId,
+                        Answer = ((TrueFalseAnswerType)answer).Answer.ToString(),
+                        UserId = _userId
+                    };
+                    await _dbContext.AssessmentAnswers.AddAsync(trueFalseAnswer);
+                }
+                else if (answer is MultipleChoiceAnswerType)
+                {
+                    var multipleChoiceAnswer = new AssessmentAnswer
+                    {
+                        // assessmentId its not found in the post_assessment_answers.json file
+                        // so i assumed all these answers for the same assessment
+                        AssessmentId = command.assessmentId,
+                        AssessmentQuestionId = answer.QuestionId,
+                        UserId = _userId,
+                        Answer = ((MultipleChoiceAnswerType)answer).Answer.ToString()
+                    };
+                    await _dbContext.AssessmentAnswers.AddAsync(multipleChoiceAnswer);
+                }
+                else if (answer is LongAnswerType)
+                {
+                    var textAnswer = new AssessmentAnswer
+                    {
+                        AssessmentId = command.assessmentId,
+                        Answer = ((LongAnswerType)answer).Answer,
+                        AssessmentQuestionId = answer.QuestionId,
+                        UserId = _userId
+                    };
+                    await _dbContext.AssessmentAnswers.AddAsync(textAnswer);
+                }
+                else if (answer is ShortAnswerType)
+                {
+                    var textAnswer = new AssessmentAnswer
+                    {
+                        AssessmentId = command.assessmentId,
+                        Answer = ((ShortAnswerType)answer).Answer,
+                        AssessmentQuestionId = answer.QuestionId,
+                        UserId = _userId
+                    };
+                    await _dbContext.AssessmentAnswers.AddAsync(textAnswer);
+                }
 
             }
-            return Task.FromResult(true);
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<List<AssessmentAnswer>> GetAssessmentAnswers()
