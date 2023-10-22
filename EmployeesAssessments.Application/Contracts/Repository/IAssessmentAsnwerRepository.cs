@@ -1,4 +1,5 @@
-﻿using EmployeesAssessments.Domain.Entities;
+﻿using EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers;
+using EmployeesAssessments.Domain.Entities;
 
 namespace EmployeesAssessments.Application.Contracts.Persistence
 {
@@ -6,6 +7,6 @@ namespace EmployeesAssessments.Application.Contracts.Persistence
     {
         Task<List<AssessmentAnswer>> GetAssessmentAnswers();
         Task<List<AssessmentAnswer>> GetAssessmentAnswersWithQuestion();
-        Task<AssessmentAnswer> CreateAsync(AssessmentAnswer assessmentAnswer);
+        Task<bool> CreateAsync(CreateAssessmentAnswerCommand command);
     }
 }

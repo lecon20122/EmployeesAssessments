@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers
 {
-    public class AssessmentAnswerVm
+    public class CreateAssessmentAnswerVm
     {
     }
 }

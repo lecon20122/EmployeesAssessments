@@ -1,17 +1,20 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EmployeesAssessments.Application.Contracts.Persistence;
+using MediatR;
 
 namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers
 {
-    public class CreateAssessmentAnswerCommandHandler : IRequestHandler<CreateAssessmentAnswerCommand, AssessmentAnswerVm>
+    public class CreateAssessmentAnswerCommandHandler : IRequestHandler<CreateAssessmentAnswerCommand, bool>
     {
-        public Task<AssessmentAnswerVm> Handle(CreateAssessmentAnswerCommand request, CancellationToken cancellationToken)
+        private readonly IAssessmentAsnwerRepository _assessmentAsnwerRepository;
+
+        public CreateAssessmentAnswerCommandHandler(IAssessmentAsnwerRepository assessmentAsnwerRepository)
         {
-            throw new NotImplementedException();
+            _assessmentAsnwerRepository = assessmentAsnwerRepository;
+        }
+        public async Task<bool> Handle(CreateAssessmentAnswerCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _assessmentAsnwerRepository.CreateAsync(request);
+            return result;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers;
+﻿using EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers;
+using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers;
 using EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswersWithQuestion;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -19,10 +20,10 @@ namespace EmployeesAssessments.Api.Controllers
         }
 
         [HttpGet()]
-        [ProducesResponseType(typeof(List<AssessmentAnswerVm>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<GetAssessmentAnswerVm>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<List<AssessmentAnswerVm>>> AssessmentAnswers()
+        public async Task<ActionResult<List<GetAssessmentAnswerVm>>> AssessmentAnswers()
         {
             var query = new GetAssessmentAnswersQuery();
             var dtos = await _mediator.Send(query);
@@ -40,5 +41,11 @@ namespace EmployeesAssessments.Api.Controllers
             return Ok(dtos);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<int>> Create([FromBody] CreateAssessmentAnswerCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

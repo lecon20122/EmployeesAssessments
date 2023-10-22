@@ -9,7 +9,7 @@ namespace EmployeesAssessments.Application
     {
         public MappingProfile()
         {
-            CreateMap<AssessmentAnswer, AssessmentAnswerVm>().ReverseMap();
+            CreateMap<AssessmentAnswer, GetAssessmentAnswerVm>().ReverseMap();
 
             CreateMap<AssessmentAnswer, AssessmentAnswersWithQuestionVm>().ReverseMap();
 

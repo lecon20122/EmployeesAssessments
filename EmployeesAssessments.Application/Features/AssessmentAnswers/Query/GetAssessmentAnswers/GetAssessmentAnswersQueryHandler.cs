@@ -5,7 +5,7 @@ using MediatR;
 
 namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers
 {
-    public class GetAssessmentAnswersWithAssessmentAndQuestionQueryHandler : IRequestHandler<GetAssessmentAnswersQuery, List<AssessmentAnswerVm>>
+    public class GetAssessmentAnswersWithAssessmentAndQuestionQueryHandler : IRequestHandler<GetAssessmentAnswersQuery, List<GetAssessmentAnswerVm>>
     {
         private readonly IMapper _mapper;
         private readonly IAssessmentAsnwerRepository _assessmentAsnwerRepository;
@@ -16,13 +16,13 @@ namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetA
             _assessmentAsnwerRepository = assessmentAsnwerRepository;
         }
 
-        public async Task<List<AssessmentAnswerVm>> Handle(GetAssessmentAnswersQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAssessmentAnswerVm>> Handle(GetAssessmentAnswersQuery request, CancellationToken cancellationToken)
         {
             var assessmentAnswers = await _assessmentAsnwerRepository.GetAssessmentAnswers();
 
             if (assessmentAnswers == null) throw new NotFoundException();
 
-            return _mapper.Map<List<AssessmentAnswerVm>>(assessmentAnswers);
+            return _mapper.Map<List<GetAssessmentAnswerVm>>(assessmentAnswers);
         }
     }
 }

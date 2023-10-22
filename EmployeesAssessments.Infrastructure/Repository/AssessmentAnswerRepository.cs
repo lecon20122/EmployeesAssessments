@@ -1,4 +1,5 @@
 ﻿using EmployeesAssessments.Application.Contracts.Persistence;
+using EmployeesAssessments.Application.Features.AssessmentAnswers.Command.CreateAssessmentAnswers;
 using EmployeesAssessments.Domain.Entities;
 using EmployeesAssessments.Identity;
 using EmployeesAssessments.Identity.Models;
@@ -26,9 +27,13 @@ namespace EmployeesAssessments.Persisitence.Repository
             _userId = long.Parse(_userManager.GetUserId(principal: _httpContextAccessor.HttpContext.User));
         }
 
-        public Task<AssessmentAnswer> CreateAsync(AssessmentAnswer assessmentAnswer)
+        public Task<bool> CreateAsync(CreateAssessmentAnswerCommand command)
         {
-            throw new NotImplementedException();
+            foreach (var item in command.assessmentAnswer)
+            {
+
+            }
+            return Task.FromResult(true);
         }
 
         public async Task<List<AssessmentAnswer>> GetAssessmentAnswers()

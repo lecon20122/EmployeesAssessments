@@ -1,6 +1,6 @@
 ﻿namespace EmployeesAssessments.Application.Features.AssessmentAnswers.Query.GetAssessmentAnswers
 {
-    public class AssessmentAnswerVm
+    public class GetAssessmentAnswerVm
     {
         public long Id { get; set; }
         public string Answer { get; set; }
